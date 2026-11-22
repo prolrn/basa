@@ -6,6 +6,17 @@
     <meta name="description" content="BASA helps UB students find, compare and reserve new and secondhand course books in one place.">
     <meta name="theme-color" content="#870D29">
     <link rel="icon" href="assets/Icons/basaIcon.png">
+    <!-- Link preview (shown when the site is shared) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BASA">
+    <meta property="og:title" content="BASA – Bridging Academic Supplies and Accessibility">
+    <meta property="og:description" content="Find, compare and reserve new and secondhand UB course books in one place.">
+    <meta property="og:image" content="assets/Icons/basaIcon.png">
+    <meta property="og:image:width" content="866">
+    <meta property="og:image:height" content="288">
+    <meta property="og:image:alt" content="BASA logo">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/Icons/basaIcon.png">
     <title>BASA – Bridging Academic Supplies and Accessibility</title>
     
     <!-- Fonts -->
@@ -440,7 +451,7 @@ function viewHome() {
   const slice = list.slice((S.homePage - 1) * PAGE.home, S.homePage * PAGE.home);
   
   return `${hero('home', '', 'Find. Compare. <em>Access.</em>', '<p>Your one-stop platform for UB course books — new or used, all in one place.</p>',
-    `<form class="herosearch" id="heroForm">${SEARCH()}<input id="heroSearch" type="search" placeholder="Search for a book title, author, or course..." value="${esc(S.q)}" aria-label="Search books"><button class="go" aria-label="Search">${SEARCH()}</button></form>`,)}
+    `<form class="herosearch" id="heroForm">${SEARCH()}<input id="heroSearch" type="search" placeholder="Search for a book title, author, or course..." value="${esc(S.q)}" aria-label="Search books"><button class="go" aria-label="Search">${SEARCH()}</button></form>`, 'Study smarter.<br>Shop easier.')}
   <div class="wrap">
    <div class="announce"><img src="assets/Icons/horn.png" class="icon-img" style="width:26px;" alt=""><b>Announcement:</b><span>Midterm week is next week! Check book availability and plan ahead.</span><a href="#/home">View All Announcements ${CHEV()}</a></div>
    <div class="trio">
@@ -476,7 +487,7 @@ function viewCatalog(type) {
   
   const h = nw
     ? hero('crimson', '', 'New Books', '<div class="sub">Official UB Bookstore</div><p>Get brand-new, unused textbooks directly from the University of Batangas.</p>')
-    : hero('crimson', '', 'Secondhand Books', '<div class="sub">From Fellow UB Students</div><p>Find affordable, pre-loved course books in good condition.</p>', '');
+    : hero('crimson', '', 'Secondhand Books', '<div class="sub">From Fellow UB Students</div><p>Find affordable, pre-loved course books in good condition.</p>', '', 'Study smarter.<br>Shop greener.');
   
   return `${h}<div class="wrap">
    <div class="crumbs"><img src="assets/Icons/book.png" class="icon-img" style="width:16px;" alt="Home">${CHEV()}${nw ? '<span>New Books</span>' : '<span>Book Sections</span>' + CHEV() + '<span>Secondhand Books</span>'}</div>
