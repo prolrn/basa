@@ -61,8 +61,6 @@
         #nav [aria-current=page]{background:var(--maroon);color:#fff;box-shadow:var(--sh-btn)}
         .dd{position:relative}.menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:var(--sh-card);min-width:190px;z-index:30;padding:6px}
         .dd:hover .menu,.dd:focus-within .menu{display:block}.menu a{display:block;padding:9px 14px;border-radius:8px;font-weight:500}.menu a:hover{background:var(--rose-100)}
-        .hsearch{display:flex;align-items:center;gap:8px;width:260px;background:#FFF9F8;border:1px solid var(--line);border-radius:var(--r-pill);padding:10px 18px;box-shadow:inset 0 1px 2px rgba(0,0,0,.03)}
-        .hsearch input{border:0;background:none;outline:0;width:100%;min-width:0}
         .rbtn{width:46px;height:46px;border-radius:50%;background:#FFF9F8;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer}
         .avatar{width:46px;height:46px;border-radius:50%;border:0;padding:0;background:none;cursor:pointer;margin-left:6px;padding-left:0}
         .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
@@ -235,7 +233,6 @@
         /* ============ 6. RESPONSIVE ============ */
         @media(max-width:1100px){
           .topbar{flex-wrap:wrap}#nav{margin-left:0;order:3;width:100%;overflow-x:auto}
-          .hsearch{margin-left:auto}.g5{grid-template-columns:repeat(3,minmax(0,1fr))}
           .trio{grid-template-columns:1fr 1fr}.trio .quick{grid-column:1/-1}.news{grid-template-columns:60px 1fr}.news .art{display:none}
           .detail{grid-template-columns:1fr}}
         @media(max-width:860px){
@@ -244,7 +241,7 @@
           .trio{grid-template-columns:1fr}.dleft{grid-template-columns:1fr}.dcover{max-width:240px}
           .why .cols{grid-template-columns:1fr}.why .col{border:0!important;padding:8px 0}}
         @media(max-width:600px){
-          :root{--pad:16px}.g5,.g3{grid-template-columns:1fr 1fr;gap:10px}.hsearch{width:100%;order:4}
+          :root{--pad:16px}.g5,.g3{grid-template-columns:1fr 1fr;gap:10px}
           .hero.home{height:auto;padding-bottom:70px}.hero .script{display:none}.toolbar{flex-direction:column}
           .brand small{display:none}.feature{grid-template-columns:1fr}.feature .bigic{grid-row:auto}.feature ul,.feature .btn{grid-column:1}}
         @media(max-width:420px){.g5,.g3{grid-template-columns:1fr}}
@@ -285,11 +282,9 @@
         .crumbs .ic{width:14px;height:14px}
         .cat .ic{width:14px;height:14px;margin-left:auto}
         .pager button .ic{width:16px;height:16px}
-        .hsearch .ic{width:18px;height:18px;opacity:.5}
         .herosearch>.ic{width:20px;height:20px;opacity:.5}
         .tsearch .ic{width:20px;height:20px;opacity:.6}
         .go .ic,.rbtn .ic{width:22px;height:22px}
-        .hsearch{width:280px}
         .trio{grid-template-columns:2fr 1.75fr 1.2fr}
         .quick a{gap:12px}
         #nav .dd>button[aria-current=page]{background:var(--maroon);color:#fff;box-shadow:var(--sh-btn)}
@@ -297,14 +292,13 @@
         .avatar,.rbtn{flex:none}
         .cover{position:relative}
         .cover img,.cover .ph{position:absolute;top:4%;left:50%;transform:translateX(-50%);height:92%;width:auto;aspect-ratio:3/4}
-        .hsearch{min-width:190px}
         .dleft .icon-img{display:inline-block}
         .brand-logo{width:210px;height:auto}
         @media(max-width:860px){.brand-logo{width:170px}}
         @media(max-width:700px){.brand-logo{width:150px}}
         .topbar{padding:14px var(--pad)}
         @media(max-width:1100px){#nav{overflow:visible;flex-wrap:wrap}}
-        @media(max-width:600px){.hsearch{width:100%;margin-left:0}.divider{display:none}.avatar{margin-left:auto}#nav>a,#nav .dd>button{padding:8px 14px}}
+        @media(max-width:600px){divider{display:none}.avatar{margin-left:auto}#nav>a,#nav .dd>button{padding:8px 14px}}
         /* hero photo backgrounds: home = school, book section pages = school */
         .hero.home{background:#FCE9E7}
         .hero.home::before{content:"";position:absolute;top:0;right:0;height:100%;width:min(1287px,72vw);background:url(assets/hero/school.jpg) right center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 14%,rgba(0,0,0,.45) 38%,#000 62%);mask-image:linear-gradient(90deg,transparent 0%,transparent 14%,rgba(0,0,0,.45) 38%,#000 62%);z-index:0}
@@ -323,7 +317,7 @@
           .hero.home .script,.hero .script{display:none}
           .hero.home{height:auto;padding:40px 0 44px}
           .herosearch{width:100%}
-          .topbar{gap:12px}.hsearch{flex:1;min-width:0;width:auto}
+          .topbar{gap:12px}
           .layout{gap:18px}
           .cats{display:flex;flex-wrap:wrap;gap:8px}.cats .cat{width:auto;border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 14px}.cats .cat .ic{display:none}
         }
@@ -342,7 +336,6 @@
           .brand-logo{width:130px}
           .hero.home h1,.hero h1{font-size:32px}
           #nav>a,#nav .dd>button{padding:8px 12px;font-size:14px}
-          .hsearch{order:4;width:100%}
         }
     </style>
 </head>
@@ -439,7 +432,6 @@ function header(view) {
   $('#topbar').innerHTML = `<a class="brand" href="#/home" aria-label="BASA home">
     <img src="assets/Icons/basaIcon.png" class="brand-logo" alt="BASA – Bridging Academic Supplies and Accessibility"></a>
    <nav id="nav" aria-label="Primary">${nav}</nav>
-   ${alt ? `<button class="rbtn" aria-label="Search">${SEARCH()}</button>` : `<label class="hsearch">${SEARCH()}<input id="headerSearch" type="search" value="${esc(S.q)}" placeholder="Search books" aria-label="Search for books"></label><span class="divider"></span>`}
    <button class="avatar" aria-label="Profile"><img src="assets/Icons/profile.png" class="icon-img" alt="Profile"></button>`;
 }
 
