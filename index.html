@@ -64,7 +64,6 @@
         .rbtn{width:46px;height:46px;border-radius:50%;background:#FFF9F8;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer}
         .avatar{width:46px;height:46px;border-radius:50%;border:0;padding:0;background:none;cursor:pointer;margin-left:6px;padding-left:0}
         .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover}
-        .divider{width:1px;height:34px;background:var(--line);margin:0 4px}
 
         /* ============ 3. HERO / WAVE BANNER ============ */
         .hero{position:relative;color:#fff;overflow:hidden;background-size:cover;background-position:center}
@@ -298,7 +297,7 @@
         @media(max-width:700px){.brand-logo{width:150px}}
         .topbar{padding:14px var(--pad)}
         @media(max-width:1100px){#nav{overflow:visible;flex-wrap:wrap}}
-        @media(max-width:600px){divider{display:none}.avatar{margin-left:auto}#nav>a,#nav .dd>button{padding:8px 14px}}
+        @media(max-width:600px){.avatar{margin-left:auto}#nav>a,#nav .dd>button{padding:8px 14px}}
         /* hero photo backgrounds: home = school, book section pages = school */
         .hero.home{background:#FCE9E7}
         .hero.home::before{content:"";position:absolute;top:0;right:0;height:100%;width:min(1287px,72vw);background:url(assets/hero/school.jpg) right center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 14%,rgba(0,0,0,.45) 38%,#000 62%);mask-image:linear-gradient(90deg,transparent 0%,transparent 14%,rgba(0,0,0,.45) 38%,#000 62%);z-index:0}
@@ -336,6 +335,35 @@
           .brand-logo{width:130px}
           .hero.home h1,.hero h1{font-size:32px}
           #nav>a,#nav .dd>button{padding:8px 12px;font-size:14px}
+        }
+
+        /* ---- header: responsive (desktop / tablet / mobile) ---- */
+        .topbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:12px var(--pad)}
+        .brand{flex:none}
+        .brand-logo{width:200px;height:auto}
+        #nav{display:flex;align-items:center;gap:4px;margin-left:auto;order:0;width:auto;overflow:visible;flex-wrap:nowrap}
+        .avatar{flex:none;margin-left:6px;order:0}
+        .dd:last-child .menu{left:auto;right:0}
+        .menu{max-width:calc(100vw - 2 * var(--pad))}
+        @media(max-width:1000px){
+          .brand-logo{width:170px}
+          #nav>a,#nav .dd>button{padding:8px 14px;font-size:14.5px}
+        }
+        @media(max-width:860px){
+          .topbar{padding:10px var(--pad)}
+          .avatar{margin-left:auto;order:1}
+          .brand{order:0}
+          #nav{order:2;width:100%;margin-left:0;flex-wrap:wrap;justify-content:flex-start;gap:6px}
+        }
+        @media(max-width:600px){
+          .brand-logo{width:140px}
+          .avatar,.avatar img{width:40px;height:40px}
+          #nav>a,#nav .dd>button{padding:7px 12px;font-size:14px}
+          #nav{gap:4px}
+        }
+        @media(max-width:380px){
+          .brand-logo{width:120px}
+          #nav>a,#nav .dd>button{padding:6px 10px;font-size:13px}
         }
     </style>
 </head>
@@ -585,8 +613,7 @@ const refresh = () => { const y = scrollY, el = document.activeElement, id = el 
 const doSearch = debounce(v => { S.q = v; S.page = S.homePage = 1; refresh(); });
 document.addEventListener('input', e => {
   const t = e.target;
-  if (['catSearch', 'heroSearch', 'headerSearch'].includes(t.id)) {
-    if (t.id === 'headerSearch' && !['#/home', '#/new', '#/secondhand', '', '#'].includes(location.hash)) location.hash = '#/home';
+  if (['catSearch', 'heroSearch'].includes(t.id)) {
     doSearch(t.value);
   }
 });
