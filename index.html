@@ -316,6 +316,34 @@
           .hero.home{background:linear-gradient(180deg,rgba(252,233,231,.78),rgba(252,233,231,.5)),url(assets/hero/school.jpg) center / cover no-repeat}
           .hero.home .script{color:var(--maroon);text-shadow:none}.hero.home .script::after{background:var(--maroon)}
         }
+
+        /* ---- mobile & tablet responsiveness ---- */
+        @media(max-width:1100px){.trio{grid-template-columns:1fr 1fr}.trio .quick{grid-column:1/-1}.news{grid-template-columns:64px 1fr}}
+        @media(max-width:860px){
+          .hero.home .script,.hero .script{display:none}
+          .hero.home{height:auto;padding:40px 0 44px}
+          .herosearch{width:100%}
+          .topbar{gap:12px}.hsearch{flex:1;min-width:0;width:auto}
+          .layout{gap:18px}
+          .cats{display:flex;flex-wrap:wrap;gap:8px}.cats .cat{width:auto;border:1px solid var(--line);border-radius:var(--r-pill);padding:8px 14px}.cats .cat .ic{display:none}
+        }
+        @media(max-width:700px){
+          .trio{grid-template-columns:1fr}
+          .feature{min-height:0;grid-template-columns:1fr;padding:22px}
+          .feature h2{font-size:26px}
+          .news{grid-template-columns:1fr}
+          .sec-head{flex-wrap:wrap;gap:6px}.sec-head h2{font-size:22px}
+          .herosearch{height:52px}.brand-logo{width:150px}
+          .pager{gap:8px;flex-wrap:wrap}
+          .foot svg{height:90px}
+        }
+        @media(max-width:420px){
+          .g5 .cover,.g3 .cover{aspect-ratio:16/11}
+          .brand-logo{width:130px}
+          .hero.home h1,.hero h1{font-size:32px}
+          #nav>a,#nav .dd>button{padding:8px 12px;font-size:14px}
+          .hsearch{order:4;width:100%}
+        }
     </style>
 </head>
 <body>
@@ -580,7 +608,7 @@ document.addEventListener('click', e => {
   const t = e.target;
   const h = t.closest('[data-heart]'); if (h) { e.stopPropagation(); const id = +h.dataset.heart, i = wish.indexOf(id); i < 0 ? wish.push(id) : wish.splice(i, 1); saveWish(); refresh(); return; }
   const c = t.closest('[data-cat]'); if (c) { S.cat = c.dataset.cat; S.page = 1; refresh(); return; }
-  const p = t.closest('[data-page]'); if (p) { S[p.dataset.key] = +p.dataset.page; refresh(); scrollTo({ top:0 }); return; }
+  const p = t.closest('[data-page]'); if (p) { S[p.dataset.key] = +p.dataset.page; refresh(); const top = document.querySelector('.sec-head, .toolbar'); if (top) scrollTo({ top: Math.max(0, top.getBoundingClientRect().top + scrollY - 90) }); return; }
   if (t.closest('#clearF')) { Object.assign(S, { cat:'All Categories', avail:[], cond:[], price:[], page:1 }); refresh(); return; }
   if (t.closest('#reserveBtn')) {
     const b = byId(+location.hash.split('/')[2]), q = +$('#qty').value;
